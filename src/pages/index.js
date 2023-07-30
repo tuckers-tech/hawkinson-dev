@@ -1,23 +1,26 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
+import * as React from 'react'
+import { Link, graphql } from 'gatsby'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Bio from '../components/bio'
+import Layout from '../components/layout'
+import Seo from '../components/seo'
+import ProjectCard from '../components/ProjectCard'
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
 
-  if (posts.length === 0) {
+  const articles = data.allMarkdownRemark.nodes.filter(node =>
+    node.fileAbsolutePath.includes('articles')
+  )
+
+  const projects = data.allMarkdownRemark.nodes.filter(node =>
+    node.fileAbsolutePath.includes('projects')
+  )
+
+  if (articles.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
         <Bio />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
       </Layout>
     )
   }
@@ -25,29 +28,36 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
+      <ol>
+        {projects.map(project => {
+          return <ProjectCard project={project} key={project.fields.slug} />
+        })}
+      </ol>
+
       <ol style={{ listStyle: `none` }}>
-        {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
+        {articles.map(article => {
+          const title = article.frontmatter.title || article.fields.slug
 
           return (
-            <li key={post.fields.slug}>
+            <li key={article.fields.slug}>
               <article
-                className="post-list-item"
+                className="article-list-item"
                 itemScope
                 itemType="http://schema.org/Article"
               >
                 <header>
                   <h2>
-                    <Link to={post.fields.slug} itemProp="url">
+                    <Link to={article.fields.slug} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter.date}</small>
+                  <small>{article.frontmatter.date}</small>
                 </header>
                 <section>
                   <p
                     dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
+                      __html:
+                        article.frontmatter.description || article.excerpt,
                     }}
                     itemProp="description"
                   />
@@ -88,6 +98,7 @@ export const pageQuery = graphql`
           title
           description
         }
+        fileAbsolutePath
       }
     }
   }
