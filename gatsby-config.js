@@ -17,10 +17,11 @@ module.exports = {
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://hawkinson.dev`,
     social: {
-      twitter: 'tuckers_tech'
-    }
+      twitter: 'tuckers_tech',
+    },
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -50,7 +51,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 630,
+              maxWidth: 1000,
             },
           },
           {
@@ -89,7 +90,7 @@ module.exports = {
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  custom_elements: [{ 'content:encoded': node.html }],
                 })
               })
             },
@@ -108,8 +109,8 @@ module.exports = {
                 }
               }
             }`,
-            output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            output: '/rss.xml',
+            title: 'Gatsby Starter Blog RSS Feed',
           },
         ],
       },
@@ -120,7 +121,7 @@ module.exports = {
         name: `hawkinson.dev - Site by Tucker Hawkinson`,
         short_name: `hawkinson.dev`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#eeeae3`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,

@@ -1,10 +1,21 @@
 import * as React from 'react'
+import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import ProjectCard from '../components/ProjectCard'
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @media (max-width: 450px) {
+    grid-template-columns: 1fr;
+  }
+`
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -28,11 +39,11 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
-      <ol>
+      <Grid>
         {projects.map(project => {
           return <ProjectCard project={project} key={project.fields.slug} />
         })}
-      </ol>
+      </Grid>
 
       <ol style={{ listStyle: `none` }}>
         {articles.map(article => {

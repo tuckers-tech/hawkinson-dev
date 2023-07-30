@@ -10,11 +10,13 @@
   "dependencies": {
     "@fontsource-variable/montserrat": "^5.0.4",
     "@fontsource/merriweather": "^5.0.3",
+    "babel-plugin-styled-components": "^2.1.4",
     "gatsby": "^5.11.0",
     "gatsby-plugin-feed": "^5.11.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.11.0",
     "gatsby-plugin-sharp": "^5.11.0",
+    "gatsby-plugin-styled-components": "^6.11.0",
     "gatsby-remark-images": "^7.11.0",
     "gatsby-remark-prismjs": "^7.11.0",
     "gatsby-remark-responsive-iframe": "^6.11.1",
@@ -23,7 +25,8 @@
     "gatsby-transformer-sharp": "^5.11.0",
     "prismjs": "^1.29.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "styled-components": "^6.0.5"
   },
   "devDependencies": {
     "prettier": "^2.8.8"
