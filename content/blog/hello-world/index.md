@@ -156,8 +156,12 @@ This is a paragraph.
 1. **bold** goes here
 
 ```markdown
-1. `code goes` here in this line
-1. **bold** goes here
+`code goes` here in this line
+**bold** goes here
+```
+
+```typescript
+const example = 'testing'
 ```
 
 Paragraph:
