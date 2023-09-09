@@ -7,7 +7,7 @@ import Layout from '../components/layout'
 import Seo from '../components/seo'
 import ProjectCard from '../components/ProjectCard'
 
-const Grid = styled.div`
+const ProjectGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
@@ -39,13 +39,13 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <Bio />
-      <Grid>
+      <ProjectGrid>
         {projects
           .filter(project => !project.frontmatter.draft)
           .map(project => {
             return <ProjectCard project={project} key={project.fields.slug} />
           })}
-      </Grid>
+      </ProjectGrid>
 
       <ol style={{ listStyle: `none` }}>
         {articles
