@@ -40,43 +40,47 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Bio />
       <Grid>
-        {projects.map(project => {
-          return <ProjectCard project={project} key={project.fields.slug} />
-        })}
+        {projects
+          .filter(project => !project.frontmatter.draft)
+          .map(project => {
+            return <ProjectCard project={project} key={project.fields.slug} />
+          })}
       </Grid>
 
       <ol style={{ listStyle: `none` }}>
-        {articles.map(article => {
-          const title = article.frontmatter.title || article.fields.slug
+        {articles
+          .filter(article => !article.frontmatter.draft)
+          .map(article => {
+            const title = article.frontmatter.title || article.fields.slug
 
-          return (
-            <li key={article.fields.slug}>
-              <article
-                className="article-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={article.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{article.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        article.frontmatter.description || article.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          )
-        })}
+            return (
+              <li key={article.fields.slug}>
+                <article
+                  className="article-list-item"
+                  itemScope
+                  itemType="http://schema.org/Article"
+                >
+                  <header>
+                    <h2>
+                      <Link to={article.fields.slug} itemProp="url">
+                        <span itemProp="headline">{title}</span>
+                      </Link>
+                    </h2>
+                    <small>{article.frontmatter.date}</small>
+                  </header>
+                  <section>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          article.frontmatter.description || article.excerpt,
+                      }}
+                      itemProp="description"
+                    />
+                  </section>
+                </article>
+              </li>
+            )
+          })}
       </ol>
     </Layout>
   )
@@ -108,6 +112,7 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          draft
         }
         fileAbsolutePath
       }
