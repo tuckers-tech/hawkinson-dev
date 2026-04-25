@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
+import ContactLinks from "../components/ContactLinks.astro";
+
+const BLOG_URL = "https://tuckers.tech";
+
+const projects = [
+  {
+    title: "Project One",
+    description:
+      "A short description of what this project does, the problem it solves, and what made it interesting to build. Replace with real copy.",
+    tags: ["TypeScript", "React", "Node"],
+    href: "#",
+  },
+  {
+    title: "Project Two",
+    description:
+      "Another placeholder project — swap in something you actually built. One or two sentences is plenty.",
+    tags: ["Go", "Postgres", "Kubernetes"],
+    href: "#",
+  },
+  {
+    title: "Project Three",
+    description:
+      "Third placeholder. Aim for projects that signal both your range and your taste.",
+    tags: ["Rust", "WASM"],
+    href: "#",
+  },
+];
+
+const experience = [
+  {
+    period: "2023 — Present",
+    role: "Role Title",
+    company: "Company Name",
+    summary:
+      "What you owned, what shipped, and the impact in one or two sentences. Replace with the real story.",
+  },
+  {
+    period: "2020 — 2023",
+    role: "Previous Role",
+    company: "Previous Company",
+    summary:
+      "Placeholder summary of a previous chapter. Lead with scope and outcomes, not titles.",
+  },
+  {
+    period: "2017 — 2020",
+    role: "Earlier Role",
+    company: "Earlier Company",
+    summary:
+      "Earlier-career placeholder. Keep these terse — readers care about recent work most.",
+  },
+];
+
+const contactLinks = [
+  { label: "Email", href: "mailto:tucker@hawkinson.dev" },
+  { label: "GitHub", href: "https://github.com/tuckerstech" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/" },
+  { label: "Blog", href: BLOG_URL },
+];
+---
+
+<BaseLayout title="Tucker Hawkinson">
+  <Hero blogUrl={BLOG_URL} />
+
+  <section id="projects" class="max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-24">
+    <SectionHeading label="Selected work" title="Projects" />
+    <div class="border-t border-border">
+      {projects.map((project) => <ProjectCard {...project} />)}
+    </div>
+  </section>
+
+  <section id="experience" class="max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-24">
+    <SectionHeading label="Career" title="Experience" />
+    <div class="border-t border-border">
+      {experience.map((item) => <ExperienceItem {...item} />)}
+    </div>
+  </section>
+
+  <section id="writing" class="max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-24">
+    <SectionHeading label="Writing" title="On the blog" />
+    <p class="text-text-muted text-lg max-w-2xl leading-relaxed">
+      Long-form notes on engineering, leadership, and the craft of shipping
+      software live on <span class="font-mono text-text">tuckers.tech</span>.
+      Essays, deep-dives, and the occasional opinion.
+    </p>
+    <div class="mt-8">
+      <a
+        href={BLOG_URL}
+        class="inline-flex items-center gap-2 border border-accent bg-accent/5 rounded-full px-6 py-2.5 text-accent hover:bg-accent/10 transition-colors"
+      >
+        Read tuckers.tech
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="contact" class="max-w-5xl mx-auto px-6 md:px-8 py-16 md:py-24">
+    <SectionHeading label="Get in touch" title="Contact" />
+    <p class="text-text-muted text-lg max-w-2xl leading-relaxed mb-8">
+      The fastest way to reach me is email. I read everything; I reply to most.
+    </p>
+    <ContactLinks links={contactLinks} />
+  </section>
+</BaseLayout>

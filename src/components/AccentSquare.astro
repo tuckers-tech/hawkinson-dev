@@ -1,0 +1,9 @@
+---
+interface Props {
+  size?: "sm" | "md";
+}
+const { size = "sm" } = Astro.props;
+const sizeClass = size === "md" ? "w-3 h-3" : "w-2 h-2";
+---
+
+<span class={`inline-block ${sizeClass} bg-accent rounded-sm`} aria-hidden="true"></span>
