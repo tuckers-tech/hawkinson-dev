@@ -3,7 +3,7 @@ interface Props {
   company: string;
   role: string;
   period: string;
-  summary: string;
+  summary?: string;
 }
 
 const { company, role, period, summary } = Astro.props;
@@ -17,7 +17,7 @@ const { company, role, period, summary } = Astro.props;
         {role}
         <span class="text-text-muted font-normal"> · {company}</span>
       </h3>
-      <p class="text-text-muted mt-2 leading-relaxed">{summary}</p>
+      {summary && <p class="text-text-muted mt-2 leading-relaxed">{summary}</p>}
     </div>
   </div>
 </div>
