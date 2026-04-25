@@ -4,7 +4,7 @@ Guidance for Claude Code when working in this repository.
 
 ## Project Overview
 
-Single-page personal landing site for `hawkinson.dev`. Companion to the blog at `tuckers.tech` — visually aligned, but a separate static site whose only job is to introduce Tucker and route readers to the blog.
+Single-page personal landing site for `hawkinson.dev`. Companion to the blog at `tuckers-tech` — visually aligned, but a separate static site whose only job is to introduce Tucker and route readers to the blog.
 
 ## Stack
 
@@ -18,11 +18,11 @@ Astro 5 + Tailwind CSS 4 (via `@tailwindcss/vite`), static output, pnpm. No cont
 
 ## Structure
 
-- `src/pages/index.astro` — the landing page; placeholder data (`projects`, `experience`, `contactLinks`) lives at the top of the file. Edit there to update content.
+- `src/pages/index.astro` — the landing page; placeholder data (`experience`, `contactLinks`) lives at the top of the file. Edit there to update content.
 - `src/layouts/BaseLayout.astro` — html shell, font loading, Nav + Footer.
 - `src/components/`
   - `AccentSquare.astro`, `Nav.astro`, `Footer.astro` — chrome.
-  - `Hero.astro`, `SectionHeading.astro`, `ProjectCard.astro`, `ExperienceItem.astro`, `ContactLinks.astro` — landing-page sections.
+  - `Hero.astro`, `SectionHeading.astro`, `ExperienceItem.astro`, `ContactLinks.astro` — landing-page sections.
 - `src/styles/global.css` — Tailwind import + design tokens (`@theme`) + prose styles. Mirrors the tokens used by `tuckers-tech`.
 
 ## Theming
@@ -42,4 +42,4 @@ The page is intentionally a single file plus a few presentational components. To
 
 ## Blog Link
 
-`BLOG_URL = "https://tuckers.tech"` is referenced in `Nav.astro`, `Footer.astro`, and `index.astro`. Update all three if the blog domain changes.
+`BLOG_URL = "https://tuckers-tech.com"` is referenced in `Nav.astro`, `Footer.astro`, and `index.astro`. Update all three if the blog domain changes.

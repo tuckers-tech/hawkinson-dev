@@ -1,6 +1,6 @@
 # hawkinson.dev
 
-Personal landing page for Tucker Hawkinson. Built with Astro 5 and Tailwind CSS 4 to match the visual language of [tuckers.tech](https://tuckers.tech), the blog.
+Personal landing page for Tucker Hawkinson. Built with Astro 5 and Tailwind CSS 4 to match the visual language of [tuckers-tech](https://tuckers-tech.com), the blog.
 
 ## Commands
 
