@@ -1,0 +1,20 @@
+---
+import AccentSquare from "./AccentSquare.astro";
+
+const BLOG_URL = "https://tuckers.tech";
+---
+
+<nav class="px-6 md:px-12 py-6 flex items-center justify-between">
+  <a href="/" class="flex items-center gap-2 text-text hover:text-accent transition-colors">
+    <AccentSquare />
+    <span class="text-xl font-semibold">hawkinson.dev</span>
+  </a>
+  <div class="flex items-center gap-4">
+    <a
+      href={BLOG_URL}
+      class="text-sm border border-border rounded-full px-4 py-1.5 text-text-muted hover:text-accent hover:border-accent transition-colors"
+    >
+      Blog
+    </a>
+  </div>
+</nav>

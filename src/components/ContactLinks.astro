@@ -1,0 +1,24 @@
+---
+interface Link {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  links: Link[];
+}
+
+const { links } = Astro.props;
+
+const pillClass =
+  "inline-flex items-center gap-2 text-sm border border-border rounded-full px-4 py-1.5 text-text-muted hover:text-accent hover:border-accent transition-colors";
+---
+
+<div class="flex flex-wrap gap-3">
+  {links.map(({ label, href }) => (
+    <a href={href} class={pillClass}>
+      {label}
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  ))}
+</div>
